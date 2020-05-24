@@ -1,0 +1,7 @@
+/.idea/
+/.config/
+!/.config/.keep
+/coverage/
+!/coverage/.keep
+/vendor/
+!/vendor/.keep

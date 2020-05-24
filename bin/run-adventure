@@ -1,0 +1,32 @@
+#!/usr/bin/env php
+<?php
+$autoload = null;
+
+$autoloadFiles = [
+    __DIR__ . '/../vendor/autoload.php'
+];
+
+foreach ($autoloadFiles as $autoloadFile) {
+    if (file_exists($autoloadFile)) {
+        $autoload = $autoloadFile;
+        break;
+    }
+}
+
+if (! $autoload) {
+    echo "Autoload file not found; try 'composer dump-autoload' first." . PHP_EOL;
+    exit(1);
+}
+
+require $autoload;
+
+use \HeroAdventure\App;
+try {
+    $app = new App();
+    $executeState = $app->start();
+} catch (Exception $e) {
+    print "An exception was thrown while setting up the adventure ({$e->getMessage()})" . PHP_EOL;
+    exit(1);
+}
+
+$executeState === true ? exit(0) : exit(1);
