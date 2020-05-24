@@ -1,6 +1,6 @@
 /.idea/
-/.config/
 !/.config/.keep
+/.config/
 /coverage/
 !/coverage/.keep
 /vendor/
